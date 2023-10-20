@@ -3,6 +3,7 @@ package com.example.kafka.ecommerce;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.List;
 import java.util.UUID;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +11,8 @@ class CheckoutTests {
 
     private final ShoppingCart cart = new ShoppingCart();
     private final Orders orders = new Orders();
-    private final Checkout useCase = new Checkout(cart, orders);
+    private final InMemoryEvents events = new InMemoryEvents();
+    private final Checkout useCase = new Checkout(cart, orders, events);
 
     @Test
     void placeNewOrderAndReturnOrderId() {
@@ -22,6 +24,16 @@ class CheckoutTests {
         var order = orders.findById(orderId).orElse(null);
         assertThat(order).isNotNull();
         assertThat(order.state()).isEqualTo(Order.State.Placed);
+    }
+
+    @Test
+    void publishEventWhenOrderIsPlaced() {
+        cart.addItem("first-item");
+        cart.addItem("second-item");
+
+        var orderId = useCase.handle();
+
+        assertThat(events.findAll()).contains(new OrderPlaced(orderId, List.of("first-item", "second-item")));
     }
 
     @Test

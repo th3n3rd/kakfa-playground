@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest(CheckoutApi.class)
-@Import({Orders.class, ShoppingCart.class, Checkout.class})
+@Import({Orders.class, ShoppingCart.class, Checkout.class, SpringEvents.class})
 class CheckoutApiTests {
 
     @Autowired

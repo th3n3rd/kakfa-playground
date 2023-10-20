@@ -9,10 +9,12 @@ class Checkout {
 
     private final ShoppingCart cart;
     private final Orders orders;
+    private final Events events;
 
-    public Checkout(ShoppingCart cart, Orders orders) {
+    public Checkout(ShoppingCart cart, Orders orders, Events events) {
         this.cart = cart;
         this.orders = orders;
+        this.events = events;
     }
 
     UUID handle() {
@@ -21,6 +23,7 @@ class Checkout {
         }
         var order = new PlacedOrder(UUID.randomUUID(), List.copyOf(cart.listItems()));
         orders.save(order);
+        events.publish(new OrderPlaced(order.orderId(), order.items()));
         cart.clear();
         return order.orderId();
     }
