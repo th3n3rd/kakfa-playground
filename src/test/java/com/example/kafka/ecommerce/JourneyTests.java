@@ -9,7 +9,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.context.event.EventListener;
 import org.springframework.kafka.test.context.EmbeddedKafka;
+import org.springframework.stereotype.Component;
 
 @EmbeddedKafka
 @SpringBootTest(
@@ -34,6 +36,5 @@ class JourneyTests {
         var orderId = buyer.checkout();
         buyer.hasReceivedAllItems(orderId, List.of("usb-c charger"));
     }
-
 }
 

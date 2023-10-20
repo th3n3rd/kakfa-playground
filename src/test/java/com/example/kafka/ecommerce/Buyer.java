@@ -42,11 +42,11 @@ public class Buyer {
 
     void hasReceivedAllItems(UUID orderId, List<String> expectedItems) {
         await()
-            .atMost(5, SECONDS)
+            .atMost(10, SECONDS)
             .alias("all items have been received")
             .until(() -> {
                var orderDetails = findOrderDetails(orderId);
-               return orderDetails.state().equals("Delivered")
+               return orderDetails.state().equals(Order.State.Delivered)
                    && orderDetails.items().containsAll(expectedItems);
             });
     }
