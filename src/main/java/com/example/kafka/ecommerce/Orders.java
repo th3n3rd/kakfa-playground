@@ -9,13 +9,13 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 class Orders {
-    Map<UUID, Order> ordersById = new HashMap<>();
+    private final Map<UUID, Order> ordersById = new HashMap<>();
 
     boolean exists(UUID orderId) {
         return ordersById.containsKey(orderId);
     }
 
-    void add(Order order) {
+    void save(Order order) {
         ordersById.put(order.orderId(), order);
     }
 

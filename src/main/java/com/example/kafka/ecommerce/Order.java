@@ -9,6 +9,8 @@ interface Order {
     List<String> items();
 
     enum State {
-        Placed
+        Placed,
+        Dispatched,
+        Delivered
     }
 }

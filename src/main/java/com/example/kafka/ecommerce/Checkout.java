@@ -20,7 +20,7 @@ class Checkout {
             throw new CheckoutFailed.EmptyCart();
         }
         var order = new PlacedOrder(UUID.randomUUID(), List.copyOf(cart.listItems()));
-        orders.add(order);
+        orders.save(order);
         cart.clear();
         return order.orderId();
     }

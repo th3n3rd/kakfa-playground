@@ -9,4 +9,7 @@ record PlacedOrder(UUID orderId, List<String> items) implements Order {
         return Order.State.Placed;
     }
 
+    public DispatchedOrder dispatch() {
+        return new DispatchedOrder(orderId, items);
+    }
 }
