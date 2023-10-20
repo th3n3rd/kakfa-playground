@@ -21,4 +21,8 @@ class ShoppingCart {
     public List<String> listItems() {
         return items;
     }
+
+    public void clear() {
+        items.clear();
+    }
 }
