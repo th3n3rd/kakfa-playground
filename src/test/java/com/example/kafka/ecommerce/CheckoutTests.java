@@ -19,7 +19,9 @@ class CheckoutTests {
 
         var orderId = useCase.handle();
 
-        assertThat(orders.exists(orderId)).isTrue();
+        var order = orders.findById(orderId).orElse(null);
+        assertThat(order).isNotNull();
+        assertThat(order.state()).isEqualTo(Order.State.Placed);
     }
 
     @Test

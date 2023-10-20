@@ -19,7 +19,7 @@ class Checkout {
         if (cart.isEmpty()) {
             throw new CheckoutFailed.EmptyCart();
         }
-        var order = new Order(UUID.randomUUID(), List.copyOf(cart.listItems()));
+        var order = new PlacedOrder(UUID.randomUUID(), List.copyOf(cart.listItems()));
         orders.add(order);
         cart.clear();
         return order.orderId();
