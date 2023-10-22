@@ -1,7 +1,6 @@
 package com.example.kafka.ecommerce;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.awaitility.Awaitility.await;
 
 import java.util.List;
 import java.util.UUID;

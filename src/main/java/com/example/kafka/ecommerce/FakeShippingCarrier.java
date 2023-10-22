@@ -20,6 +20,6 @@ class FakeShippingCarrier implements ShippingCarrier {
 
     @Override
     public void requestDelivery(UUID orderId) {
-        scheduler.schedule(() -> events.publish(new OrderDelivered(orderId)), 3, SECONDS);
+        scheduler.schedule(() -> events.publish(new OrderDelivered(orderId)), 1, SECONDS);
     }
 }
