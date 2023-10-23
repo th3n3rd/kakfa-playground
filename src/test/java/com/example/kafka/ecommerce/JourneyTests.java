@@ -7,19 +7,24 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.context.event.EventListener;
 import org.springframework.kafka.test.context.EmbeddedKafka;
-import org.springframework.stereotype.Component;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ActiveProfiles;
 
+@ActiveProfiles("kafka-events")
 @EmbeddedKafka
 @SpringBootTest(
     webEnvironment = RANDOM_PORT,
     properties = {
-        "logging.level.org.apache.kafka=OFF",
-        "logging.level.org.apache.zookeeper=OFF",
-        "logging.level.kafka.*=OFF",
-        "logging.level.org.springframework.kafka.*=OFF",
-        "logging.level.state.change.logger=OFF",
+        "logging.level.org.apache.kafka=WARN",
+        "logging.level.org.apache.zookeeper=WARN",
+        "logging.level.kafka.*=WARN",
+        "logging.level.org.springframework.kafka.*=WARN",
+        "logging.level.state.change.logger=WARN",
+        "spring.kafka.producer.value-serializer=org.springframework.kafka.support.serializer.JsonSerializer",
+        "spring.kafka.consumer.value-deserializer=org.springframework.kafka.support.serializer.JsonDeserializer",
+        "spring.kafka.consumer.auto-offset-reset=earliest",
+        "spring.kafka.consumer.properties.spring.json.trusted.packages=com.example.kafka.ecommerce"
     }
 )
 class JourneyTests {
