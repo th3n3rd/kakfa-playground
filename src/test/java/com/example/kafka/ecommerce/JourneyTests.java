@@ -8,25 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.kafka.test.context.EmbeddedKafka;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 
 @ActiveProfiles("kafka-events")
 @EmbeddedKafka
-@SpringBootTest(
-    webEnvironment = RANDOM_PORT,
-    properties = {
-        "logging.level.org.apache.kafka=WARN",
-        "logging.level.org.apache.zookeeper=WARN",
-        "logging.level.kafka.*=WARN",
-        "logging.level.org.springframework.kafka.*=WARN",
-        "logging.level.state.change.logger=WARN",
-        "spring.kafka.producer.value-serializer=org.springframework.kafka.support.serializer.JsonSerializer",
-        "spring.kafka.consumer.value-deserializer=org.springframework.kafka.support.serializer.JsonDeserializer",
-        "spring.kafka.consumer.auto-offset-reset=earliest",
-        "spring.kafka.consumer.properties.spring.json.trusted.packages=com.example.kafka.ecommerce"
-    }
-)
+@SpringBootTest(webEnvironment = RANDOM_PORT)
 class JourneyTests {
 
     @Autowired
@@ -40,4 +26,3 @@ class JourneyTests {
         buyer.hasReceivedAllItems(orderId, List.of("usb-c charger"));
     }
 }
-
