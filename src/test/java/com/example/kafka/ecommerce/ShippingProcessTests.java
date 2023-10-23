@@ -8,20 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.kafka.test.context.EmbeddedKafka;
-import org.springframework.test.context.event.ApplicationEvents;
-import org.springframework.test.context.event.RecordApplicationEvents;
 
-@EmbeddedKafka
-@SpringBootTest(
-    properties = {
-        "logging.level.org.apache.kafka=OFF",
-        "logging.level.org.apache.zookeeper=OFF",
-        "logging.level.kafka.*=OFF",
-        "logging.level.org.springframework.kafka.*=OFF",
-        "logging.level.state.change.logger=OFF",
-    }
-)
+@SpringBootTest
 class ShippingProcessTests {
 
     @Autowired
