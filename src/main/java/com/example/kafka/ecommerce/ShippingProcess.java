@@ -6,21 +6,21 @@ import org.springframework.stereotype.Component;
 @Component
 class ShippingProcess {
 
-    private final DispatchOrder dispatchOrder;
-    private final MarkOrderAsDelivered markOrderAsDelivered;
+    private final DispatchShipment dispatchShipment;
+    private final PrepareShipment prepareShipment;
 
-    ShippingProcess(DispatchOrder dispatchOrder, MarkOrderAsDelivered markOrderAsDelivered) {
-        this.dispatchOrder = dispatchOrder;
-        this.markOrderAsDelivered = markOrderAsDelivered;
+    ShippingProcess(PrepareShipment prepareShipment, DispatchShipment dispatchShipment) {
+        this.prepareShipment = prepareShipment;
+        this.dispatchShipment = dispatchShipment;
     }
 
     @EventListener
     public void on(OrderPlaced event) {
-        dispatchOrder.handle(new DispatchOrder.Command(event.orderId()));
+        prepareShipment.handle(new PrepareShipment.Command(event.orderId()));
     }
 
     @EventListener
-    public void on(OrderDelivered event) {
-        markOrderAsDelivered.handle(new MarkOrderAsDelivered.Command(event.orderId()));
+    public void on(ShipmentPrepared event) {
+        dispatchShipment.handle(new DispatchShipment.Command(event.orderId()));
     }
 }

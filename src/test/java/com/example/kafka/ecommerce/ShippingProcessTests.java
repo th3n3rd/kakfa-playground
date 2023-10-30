@@ -1,12 +1,13 @@
 package com.example.kafka.ecommerce;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.then;
 
 import java.util.List;
 import java.util.UUID;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.ApplicationEventPublisher;
 
 @SpringBootTest
@@ -15,31 +16,26 @@ class ShippingProcessTests {
     @Autowired
     private ApplicationEventPublisher eventPublisher;
 
-    @Autowired
-    private Orders orders;
+    @MockBean
+    private PrepareShipment prepareShipment;
+
+    @MockBean
+    private DispatchShipment dispatchShipment;
 
     @Test
-    void whenAnOrderIsPlacedIsAutomaticallyDispatched() {
+    void whenAnOrderIsPlacedAShipmentIsAutomaticallyPrepared() {
         var orderId = UUID.randomUUID();
-        orders.save(new PlacedOrder(orderId, List.of("first-item", "second-item")));
-
         eventPublisher.publishEvent(new OrderPlaced(orderId, List.of("first-item", "second-item")));
 
-        var dispatchedOrder = orders.findById(orderId).orElse(null);
-        assertThat(dispatchedOrder).isNotNull();
-        assertThat(dispatchedOrder.state()).isEqualTo(Order.State.Dispatched);
+        then(prepareShipment).should().handle(new PrepareShipment.Command(orderId));
     }
 
     @Test
-    void whenAndOrderIsDeliveredItMarksTheOrderAsSuch() {
+    void whenAPackageHasFinishedPreparationIsAutomaticallyDispatched() {
         var orderId = UUID.randomUUID();
-        orders.save(new DispatchedOrder(orderId, List.of("first-item", "second-item")));
+        eventPublisher.publishEvent(new ShipmentPrepared(orderId));
 
-        eventPublisher.publishEvent(new OrderDelivered(orderId));
-
-        var deliveredOrder = orders.findById(orderId).orElse(null);
-        assertThat(deliveredOrder).isNotNull();
-        assertThat(deliveredOrder.state()).isEqualTo(Order.State.Delivered);
+        then(dispatchShipment).should().handle(new DispatchShipment.Command(orderId));
     }
 }
 

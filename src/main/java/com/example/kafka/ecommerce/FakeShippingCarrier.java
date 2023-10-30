@@ -5,7 +5,6 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 import java.util.UUID;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -20,6 +19,6 @@ class FakeShippingCarrier implements ShippingCarrier {
 
     @Override
     public void requestDelivery(UUID orderId) {
-        scheduler.schedule(() -> events.publish(new OrderDelivered(orderId)), 1, SECONDS);
+        scheduler.schedule(() -> events.publish(new ShipmentDelivered(orderId)), 1, SECONDS);
     }
 }
