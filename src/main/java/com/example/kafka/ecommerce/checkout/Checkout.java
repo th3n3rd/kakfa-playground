@@ -1,4 +1,4 @@
-package com.example.kafka.ecommerce;
+package com.example.kafka.ecommerce.checkout;
 
 import com.example.kafka.ecommerce.common.Events;
 import java.util.List;

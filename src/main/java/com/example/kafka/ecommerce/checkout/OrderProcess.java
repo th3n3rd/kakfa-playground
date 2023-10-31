@@ -1,6 +1,7 @@
-package com.example.kafka.ecommerce;
+package com.example.kafka.ecommerce.checkout;
 
-import java.util.UUID;
+import com.example.kafka.ecommerce.ShipmentDelivered;
+import com.example.kafka.ecommerce.ShipmentDispatched;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 

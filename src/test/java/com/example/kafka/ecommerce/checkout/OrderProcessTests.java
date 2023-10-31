@@ -1,7 +1,9 @@
-package com.example.kafka.ecommerce;
+package com.example.kafka.ecommerce.checkout;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.example.kafka.ecommerce.ShipmentDelivered;
+import com.example.kafka.ecommerce.ShipmentDispatched;
 import java.util.List;
 import java.util.UUID;
 import org.junit.jupiter.api.Test;

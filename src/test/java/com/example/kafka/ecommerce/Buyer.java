@@ -5,6 +5,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.awaitility.Awaitility.await;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 
+import com.example.kafka.ecommerce.checkout.CheckoutApi;
+import com.example.kafka.ecommerce.checkout.FindOrderDetailsApi;
+import com.example.kafka.ecommerce.checkout.Order;
 import java.util.List;
 import java.util.UUID;
 import org.assertj.core.api.Assertions;

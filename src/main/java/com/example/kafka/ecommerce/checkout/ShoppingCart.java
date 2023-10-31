@@ -1,8 +1,7 @@
-package com.example.kafka.ecommerce;
+package com.example.kafka.ecommerce.checkout;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 @Repository

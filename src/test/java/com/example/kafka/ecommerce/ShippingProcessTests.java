@@ -2,6 +2,7 @@ package com.example.kafka.ecommerce;
 
 import static org.mockito.BDDMockito.then;
 
+import com.example.kafka.ecommerce.checkout.OrderPlaced;
 import java.util.List;
 import java.util.UUID;
 import org.junit.jupiter.api.Test;

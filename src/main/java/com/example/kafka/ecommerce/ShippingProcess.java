@@ -1,5 +1,6 @@
 package com.example.kafka.ecommerce;
 
+import com.example.kafka.ecommerce.checkout.OrderPlaced;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 

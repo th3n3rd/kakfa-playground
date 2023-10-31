@@ -1,4 +1,4 @@
-package com.example.kafka.ecommerce;
+package com.example.kafka.ecommerce.checkout;
 
 import java.util.UUID;
 import org.springframework.http.HttpStatus;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-class CheckoutApi {
+public class CheckoutApi {
 
     private final Checkout useCase;
 
@@ -26,5 +26,5 @@ class CheckoutApi {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     void checkoutFailedBecauseOfEmptyCart() {}
 
-    record Response(UUID orderId) {}
+    public record Response(UUID orderId) {}
 }

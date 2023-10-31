@@ -1,4 +1,4 @@
-package com.example.kafka.ecommerce;
+package com.example.kafka.ecommerce.checkout;
 
 import java.util.List;
 import java.util.UUID;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-class FindOrderDetailsApi {
+public class FindOrderDetailsApi {
 
     private final Orders orders;
 
@@ -25,5 +25,5 @@ class FindOrderDetailsApi {
         );
     }
 
-    record Response(UUID orderId, List<String> items, Order.State state) {}
+    public record Response(UUID orderId, List<String> items, Order.State state) {}
 }
