@@ -1,4 +1,4 @@
-package com.example.kafka.ecommerce;
+package com.example.kafka.ecommerce.common;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;

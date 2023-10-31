@@ -1,7 +1,7 @@
 package com.example.kafka.ecommerce;
 
+import com.example.kafka.ecommerce.common.Events;
 import java.util.UUID;
-import jdk.jfr.Event;
 import org.springframework.stereotype.Component;
 
 @Component

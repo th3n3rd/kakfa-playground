@@ -1,10 +1,11 @@
-package com.example.kafka.ecommerce;
+package com.example.kafka.ecommerce.common;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
+import com.example.kafka.ecommerce.common.KafkaEvents;
 import java.util.concurrent.CompletableFuture;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

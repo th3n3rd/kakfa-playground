@@ -2,6 +2,7 @@ package com.example.kafka.ecommerce;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
+import com.example.kafka.ecommerce.common.Events;
 import java.util.UUID;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;

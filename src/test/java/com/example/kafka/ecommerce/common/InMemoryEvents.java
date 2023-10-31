@@ -1,9 +1,10 @@
-package com.example.kafka.ecommerce;
+package com.example.kafka.ecommerce.common;
 
+import com.example.kafka.ecommerce.common.Events;
 import java.util.ArrayList;
 import java.util.List;
 
-class InMemoryEvents implements Events {
+public class InMemoryEvents implements Events {
 
     private final List<Object> events = new ArrayList<>();
 

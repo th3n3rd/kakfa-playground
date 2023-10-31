@@ -2,7 +2,7 @@ package com.example.kafka.ecommerce;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.List;
+import com.example.kafka.ecommerce.common.InMemoryEvents;
 import java.util.UUID;
 import org.junit.jupiter.api.Test;
 

@@ -1,5 +1,6 @@
 package com.example.kafka.ecommerce;
 
+import com.example.kafka.ecommerce.common.Events;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.stereotype.Component;
