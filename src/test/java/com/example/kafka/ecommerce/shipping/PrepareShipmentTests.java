@@ -1,4 +1,4 @@
-package com.example.kafka.ecommerce;
+package com.example.kafka.ecommerce.shipping;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

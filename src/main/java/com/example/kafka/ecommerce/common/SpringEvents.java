@@ -1,6 +1,5 @@
 package com.example.kafka.ecommerce.common;
 
-import com.example.kafka.ecommerce.common.Events;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 

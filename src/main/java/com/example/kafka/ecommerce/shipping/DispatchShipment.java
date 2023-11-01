@@ -1,4 +1,4 @@
-package com.example.kafka.ecommerce;
+package com.example.kafka.ecommerce.shipping;
 
 import com.example.kafka.ecommerce.common.Events;
 import java.util.UUID;

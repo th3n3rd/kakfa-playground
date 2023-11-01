@@ -1,4 +1,4 @@
-package com.example.kafka.ecommerce;
+package com.example.kafka.ecommerce.shipping;
 
 import com.example.kafka.ecommerce.checkout.OrderPlaced;
 import org.springframework.context.event.EventListener;

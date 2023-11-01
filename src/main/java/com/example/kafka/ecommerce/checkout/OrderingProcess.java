@@ -1,7 +1,7 @@
 package com.example.kafka.ecommerce.checkout;
 
-import com.example.kafka.ecommerce.ShipmentDelivered;
-import com.example.kafka.ecommerce.ShipmentDispatched;
+import com.example.kafka.ecommerce.shipping.ShipmentDelivered;
+import com.example.kafka.ecommerce.shipping.ShipmentDispatched;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
