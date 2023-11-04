@@ -6,9 +6,10 @@ import static org.awaitility.Awaitility.await;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 
 import com.example.kafka.ecommerce.checkout.CheckoutApi;
-import com.example.kafka.ecommerce.checkout.FindOrderDetailsApi;
-import com.example.kafka.ecommerce.checkout.Order;
+import com.example.kafka.ecommerce.order.FindOrderDetailsApi;
+import com.example.kafka.ecommerce.order.Order;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import org.assertj.core.api.Assertions;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -49,8 +50,9 @@ public class Buyer {
             .alias("all items have been received")
             .until(() -> {
                var orderDetails = findOrderDetails(orderId);
-               return orderDetails.state().equals(Order.State.Delivered)
-                   && orderDetails.items().containsAll(expectedItems);
+               return !Objects.isNull(orderDetails)
+                    && orderDetails.state().equals(Order.State.Delivered)
+                    && orderDetails.items().containsAll(expectedItems);
             });
     }
 
@@ -59,9 +61,9 @@ public class Buyer {
             .get("/orders/{orderId}", orderId)
             .build();
         var response = client.exchange(request, FindOrderDetailsApi.Response.class);
-        assertThat(response.getStatusCode().is2xxSuccessful())
-            .as(response.toString())
-            .isTrue();
+        if (!response.getStatusCode().is2xxSuccessful()) {
+            return null;
+        }
         return response.getBody();
     }
 }

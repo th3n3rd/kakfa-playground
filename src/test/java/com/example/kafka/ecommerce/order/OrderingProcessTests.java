@@ -1,7 +1,8 @@
-package com.example.kafka.ecommerce.checkout;
+package com.example.kafka.ecommerce.order;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.example.kafka.ecommerce.checkout.OrderPlaced;
 import com.example.kafka.ecommerce.common.Events;
 import com.example.kafka.ecommerce.shipping.ShipmentDelivered;
 import com.example.kafka.ecommerce.shipping.ShipmentDispatched;
@@ -20,6 +21,19 @@ class OrderingProcessTests {
 
     @Autowired
     private Orders orders;
+
+    @Nested
+    class OnOrderPlaced {
+        @Test
+        void startTrackingState() {
+            var orderId = UUID.randomUUID();
+            events.publish(new OrderPlaced(orderId, List.of("first-item", "second-item")));
+
+            var placedOrder = orders.findById(orderId).orElse(null);
+            assertThat(placedOrder).isNotNull();
+            assertThat(placedOrder.items()).containsOnly("first-item", "second-item");
+        }
+    }
 
     @Nested
     class OnShipmentDispatched {

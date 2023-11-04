@@ -1,15 +1,15 @@
-package com.example.kafka.ecommerce.checkout;
+package com.example.kafka.ecommerce.order;
 
 import java.util.List;
 import java.util.UUID;
 
 record PlacedOrder(UUID orderId, List<String> items) implements Order {
 
-    public Order.State state() {
-        return Order.State.Placed;
+    public State state() {
+        return State.Placed;
     }
 
-    public DispatchedOrder dispatch() {
+    public DispatchedOrder asDispatched() {
         return new DispatchedOrder(orderId, items);
     }
 }

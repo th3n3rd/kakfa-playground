@@ -24,7 +24,6 @@ class CheckoutTests {
 
         var order = orders.findById(orderId).orElse(null);
         assertThat(order).isNotNull();
-        assertThat(order.state()).isEqualTo(Order.State.Placed);
     }
 
     @Test

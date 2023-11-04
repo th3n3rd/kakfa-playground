@@ -1,4 +1,4 @@
-package com.example.kafka.ecommerce.checkout;
+package com.example.kafka.ecommerce.order;
 
 import java.util.List;
 import java.util.UUID;
