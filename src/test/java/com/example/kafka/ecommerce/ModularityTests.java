@@ -2,6 +2,7 @@ package com.example.kafka.ecommerce;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.modulith.core.ApplicationModules;
+import org.springframework.modulith.docs.Documenter;
 
 class ModularityTests {
 
@@ -13,4 +14,8 @@ class ModularityTests {
         modules.verify();
     }
 
+    @Test
+    void documentsModularity() {
+        new Documenter(modules).writeDocumentation();
+    }
 }
