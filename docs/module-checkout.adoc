@@ -1,0 +1,15 @@
+[%autowidth.stretch, cols="h,a"]
+|===
+|Base package
+|`com.example.kafka.ecommerce.checkout`
+|Spring components
+|_Controllers_
+
+* `c.e.k.e.c.CheckoutApi`
+|Bean references
+|* `c.e.k.e.c.Events` (in Common)
+|Published events
+|* `c.e.k.e.c.OrderPlaced` created by:
+** `c.e.k.e.c.Checkout.handle()`
+
+|===

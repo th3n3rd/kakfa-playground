@@ -1,0 +1,8 @@
+[%autowidth.stretch, cols="h,a"]
+|===
+|Base package
+|`com.example.kafka.ecommerce.common`
+|Spring components
+|* `c.e.k.e.c.Events` (via `c.e.k.e.c.KafkaEvents`)
+* `c.e.k.e.c.Events` (via `c.e.k.e.c.SpringEvents`)
+|===

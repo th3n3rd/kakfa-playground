@@ -1,0 +1,13 @@
+[%autowidth.stretch, cols="h,a"]
+|===
+|Base package
+|`com.example.kafka.ecommerce.order`
+|Spring components
+|_Controllers_
+
+* `c.e.k.e.o.FindOrderDetailsApi`
+|Events listened to
+|* `c.e.k.e.s.ShipmentDelivered`
+* `c.e.k.e.s.ShipmentDispatched`
+* `c.e.k.e.c.OrderPlaced`
+|===

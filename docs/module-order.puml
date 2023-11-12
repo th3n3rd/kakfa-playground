@@ -1,0 +1,21 @@
+@startuml
+title Order
+
+top to bottom direction
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+Container_Boundary("EcommerceApplication.EcommerceApplication_boundary", "EcommerceApplication", $tags="") {
+  Component(EcommerceApplication.EcommerceApplication.Checkout, "Checkout", "Module", "", $tags="")
+  Component(EcommerceApplication.EcommerceApplication.Shipping, "Shipping", "Module", "", $tags="")
+  Component(EcommerceApplication.EcommerceApplication.Order, "Order", "Module", "", $tags="")
+}
+
+Rel_D(EcommerceApplication.EcommerceApplication.Order, EcommerceApplication.EcommerceApplication.Shipping, "listens to", $tags="")
+Rel_D(EcommerceApplication.EcommerceApplication.Order, EcommerceApplication.EcommerceApplication.Checkout, "listens to", $tags="")
+Rel_D(EcommerceApplication.EcommerceApplication.Shipping, EcommerceApplication.EcommerceApplication.Checkout, "listens to", $tags="")
+
+SHOW_LEGEND(true)
+@enduml

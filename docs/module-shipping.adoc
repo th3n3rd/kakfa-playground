@@ -1,0 +1,15 @@
+[%autowidth.stretch, cols="h,a"]
+|===
+|Base package
+|`com.example.kafka.ecommerce.shipping`
+|Bean references
+|* `c.e.k.e.c.Events` (in Common)
+|Published events
+|* `c.e.k.e.s.ShipmentDispatched` created by:
+** `c.e.k.e.s.DispatchShipment.handle(…)`
+* `c.e.k.e.s.ShipmentPrepared` created by:
+** `c.e.k.e.s.PrepareShipment.handle(…)`
+
+|Events listened to
+|* `c.e.k.e.c.OrderPlaced`
+|===
